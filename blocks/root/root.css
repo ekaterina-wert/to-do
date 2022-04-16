@@ -1,0 +1,28 @@
+.root {
+  min-width: 300px;
+  margin: 0 auto;
+  background-color: #dfdfc5;
+  z-index: 0;
+  font-family: 'Arial', sans-serif;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-fout-smothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+li {
+  list-style-type: none;
+}
+
+.to-do__container {
+  max-width: 300px;
+}
+
+.counter__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
