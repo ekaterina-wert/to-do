@@ -5,9 +5,13 @@ const form = document.querySelector('.to-do__form');
 const container = document.querySelector('.to-do__list');
 const template = document.querySelector('#item').content;
 
-let counterAll = document.querySelector('.counter__counter-all');
-let counterActive = document.querySelector('.counter__counter-incompleted');
-let counterCompleted = document.querySelector('.counter__counter-completed');
+const counterAll = document.querySelector('.counter__counter-all');
+const counterActive = document.querySelector('.counter__counter-incompleted');
+const counterCompleted = document.querySelector('.counter__counter-completed');
+
+const buttonShowAll = document.querySelector('.counter__button-all');
+const buttonShowActive = document.querySelector('.counter__button-incompleted');
+const buttonShowCompleted = document.querySelector('.counter__button-completed');
 
 // Функция отрисовки одной задачи из шаблона
 function renderTask(task) {
@@ -77,12 +81,40 @@ function handleCheckbox() {
             return {
                 value: item.value,
                 isDone: this.checked
-            };   
+            };
         }
         return item;
     })
 
     updateCounter();
+}
+
+function handleShowActiveList() {
+    container.innerHTML = "";
+
+    list.forEach(item => {
+        if (!item.isDone) {
+            renderTask(item)
+        }
+    })
+}
+
+function handleShowAllList() {
+    container.innerHTML = "";
+
+    list.forEach(item => {
+            renderTask(item)
+    })
+}
+
+function handleShowDoneList() {
+    container.innerHTML = "";
+
+    list.forEach(item => {
+        if (item.isDone) {
+            renderTask(item)
+        }
+    })
 }
 
 // Слушатель для формы создания новой задачи
@@ -91,4 +123,6 @@ form.addEventListener('submit', (evt) => {
     handleAddItem();
 });
 
-
+buttonShowActive.addEventListener('click', handleShowActiveList);
+buttonShowCompleted.addEventListener('click', handleShowDoneList);
+buttonShowAll.addEventListener('click', handleShowAllList);
